@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>SY GROUP / 西門綻</title>
+		<link rel="icon" href="./image/favicon.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="./index.css" />
+
+		<!-- swiper輪播套件 -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+		<!-- abbr 效果 -->
+		<link rel="stylesheet" href="./abbr.css" />
+		<!-- google fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&family=Zen+Antique&display=swap"
+			rel="stylesheet" />
+
+		<!-- AOS -->
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				if (!sessionStorage.getItem("cacheCleared")) {
+					sessionStorage.setItem("cacheCleared", "true");
+					const url = window.location.href.split("?")[0];
+					const newUrl = `${url}?clearCache=${new Date().getTime()}`;
+					window.location.replace(newUrl);
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<main>
+			<header>
+				<div class="company">
+					<img class="sy-logo" src="./image/SY-logo.png" alt="SY Logo" />
+					<a class="company-title" href="index.html">Shiuan Yuan</a>
+					<div class="logo-box">
+						<abbr data-title="Shiuan Yuan">Shiuan Yuan</abbr>
+					</div>
+				</div>
+				<button class="hamburger-menu" aria-label="Toggle menu">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+				<nav class="navbar">
+					<div class="nav-text" data-target="#top">top</div>
+					<div class="nav-text" data-target="#design-project">portfolio</div>
+					<div class="nav-text" data-target="#contact-us">contact</div>
+				</nav>
+			</header>
+
+			<div
+				class="project"
+				data-selected="true"
+				data-category="樣品屋,西門綻"
+				id="top">
+				<h2 class="project-name">西門綻</h2>
+				<h3 class="project-type">樣品屋</h3>
+				<div class="image-container">
+					<img
+						src="./image/front cover/Portfolio-2/2J7A8398.jpg"
+						alt=""
+						onclick="openSwiper(0)" />
+				</div>
+				<div class="image-container">
+					<img
+						src="./image/front cover/Portfolio-2/2J7A8414.jpg"
+						alt=""
+						onclick="openSwiper(1)" />
+				</div>
+				<div class="image-container">
+					<img
+						src="./image/front cover/Portfolio-2/2J7A8418.jpg"
+						alt=""
+						onclick="openSwiper(2)" />
+				</div>
+				<div class="image-container">
+					<img
+						src="./image/front cover/Portfolio-2/2J7A8450.jpg"
+						alt=""
+						onclick="openSwiper(3)" />
+				</div>
+				<div class="image-container">
+					<img
+						src="./image/front cover/Portfolio-2/2J7A8464.jpg"
+						alt=""
+						onclick="openSwiper(4)" />
+				</div>
+				<div class="image-container">
+					<img
+						src="./image/front cover/Portfolio-2/2J7A8467.jpg"
+						alt=""
+						onclick="openSwiper(5)" />
+				</div>
+				<div class="image-container">
+					<img
+						src="./image/front cover/Portfolio-2/2J7A8477.jpg"
+						alt=""
+						onclick="openSwiper(6)" />
+				</div>
+				<div class="image-container">
+					<img
+						src="./image/front cover/Portfolio-2/2J7A8500.jpg"
+						alt=""
+						onclick="openSwiper(7)" />
+				</div>
+				<div class="image-container">
+					<img
+						src="./image/front cover/Portfolio-2/2J7A8504.jpg"
+						alt=""
+						onclick="openSwiper(8)" />
+				</div>
+				<div class="image-container">
+					<img
+						src="./image/front cover/Portfolio-2/2J7A8516.jpg"
+						alt=""
+						onclick="openSwiper(9)" />
+				</div>
+				<div class="image-container">
+					<img
+						src="./image/front cover/Portfolio-2/2J7A8559.jpg"
+						alt=""
+						onclick="openSwiper(10)" />
+				</div>
+				<div class="image-container">
+					<img
+						src="./image/front cover/Portfolio-2/2J7A8572.jpg"
+						alt=""
+						onclick="openSwiper(11)" />
+				</div>
+				<div class="image-container">
+					<img
+						src="./image/front cover/Portfolio-2/2J7A8580.jpg"
+						alt=""
+						onclick="openSwiper(12)" />
+				</div>
+				<div class="image-container">
+					<img
+						src="./image/front cover/Portfolio-2/2J7A8636.jpg"
+						alt=""
+						onclick="openSwiper(13)" />
+				</div>
+				<div class="image-container">
+					<img
+						src="./image/front cover/Portfolio-2/2J7A8653.jpg"
+						alt=""
+						onclick="openSwiper(14)" />
+				</div>
+				<div class="image-container">
+					<img
+						src="./image/front cover/Portfolio-2/2J7A8667.jpg"
+						alt=""
+						onclick="openSwiper(15)" />
+				</div>
+			</div>
+
+			<div class="design-project" id="design-project">
+				<h2 class="portfolio-list">其他作品</h2>
+				<div class="style-filter">
+					<button
+						href="javascript: void(0)"
+						onclick="filterPortfolios('all')"
+						class="btn btn-selected">
+						全部
+					</button>
+					<button
+						href="javascript: void(0)"
+						onclick="filterPortfolios('住宅空間')"
+						class="btn">
+						住宅空間
+					</button>
+					<button
+						href="javascript: void(0)"
+						onclick="filterPortfolios('公共設計')"
+						class="btn">
+						公共設計
+					</button>
+					<button
+						href="javascript: void(0)"
+						onclick="filterPortfolios('樣品屋')"
+						class="btn">
+						樣品屋
+					</button>
+				</div>
+				<div class="latest-works">
+					<a
+						class="portfolio-size"
+						data-category="住宅空間,大隱"
+						data-aos="zoom-in-up"
+						href="portfolio-dayin.html">
+						<img
+							class="latest-work-portfolio"
+							src="./image/front cover/Portfolio-1/2J7A6799.jpg"
+							alt="Portfolio 1" />
+						<div class="portfolio-name">
+							<p>大隱</p>
+							<p>Veiw more</p>
+						</div>
+					</a>
+					<a
+						class="portfolio-size"
+						data-category="樣品屋,西門綻"
+						data-aos="zoom-in-up"
+						href="portfolio-ximenzhan.html">
+						<img
+							class="latest-work-portfolio"
+							src="./image/front cover/Portfolio-2/2J7A8464.jpg"
+							alt="Portfolio 2" />
+						<div class="portfolio-name">
+							<p>西門綻</p>
+							<p>Veiw more</p>
+						</div>
+					</a>
+					<a
+						class="portfolio-size"
+						data-category="公共設計,東騰介"
+						data-aos="zoom-in-up"
+						href="portfolio-dungtengjie.html">
+						<img
+							class="latest-work-portfolio"
+							src="./image/front cover/Portfolio-3/IMG_3141.JPG"
+							alt="Portfolio 3" />
+						<div class="portfolio-name">
+							<p>東騰介</p>
+							<p>Veiw more</p>
+						</div>
+					</a>
+					<a
+						class="portfolio-size"
+						data-category="住宅空間,國王雙子星"
+						data-aos="zoom-in-up"
+						data-aos-offset="30"
+						href="portfolio-king.html">
+						<img
+							class="latest-work-portfolio"
+							src="./image/front cover/Portfolio-4/2J7A7668.jpg"
+							alt="Portfolio 4" />
+						<div class="portfolio-name">
+							<p>國王雙子星</p>
+							<p>Veiw more</p>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<div class="contant-info" id="contact-us">
+				<p>萱源實業有限公司</p>
+				<p>02-2921-7363</p>
+				<p>新北市三重區同安東街4號</p>
+				<p>shiuanyuan1@gmail.com</p>
+			</div>
+
+			<!-- Swiper -->
+			<div class="swiper-overlay" id="swiperOverlay" style="display: none">
+				<div class="swiper mySwiper2">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8398.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8414.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8418.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8450.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8464.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8467.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8477.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8500.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8504.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8516.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8559.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8572.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8580.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8636.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8653.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8667.jpg" />
+						</div>
+					</div>
+					<h2 class="swiper-portfolio-name">西門綻</h2>
+				</div>
+				<div thumbsSlider="" class="swiper mySwiper">
+					<div class="swiper-pagination"></div>
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8398.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8414.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8418.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8450.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8464.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8467.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8477.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8500.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8504.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8516.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8559.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8572.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8580.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8636.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8653.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/Portfolio-2/2J7A8667.jpg" />
+						</div>
+					</div>
+				</div>
+				<button class="close-slider-btn" onclick="closeSwiper()">
+					close ╳
+				</button>
+			</div>
+
+			<script>
+				document.addEventListener("DOMContentLoaded", () => {
+					initializeStickyHeader();
+				});
+
+				window.addEventListener("load", () => {
+					initializeStickyHeader();
+				});
+
+				function initializeStickyHeader() {
+					console.log("Sticky Header Initialization Started");
+
+					const designProject = document.querySelector(".design-project");
+					const styleFilter = document.querySelector(".style-filter");
+
+					if (!designProject || !styleFilter) {
+						console.warn(
+							"designProject or styleFilter element not found in DOM."
+						);
+						return;
+					}
+
+					const designProjectOffsetTop = designProject.offsetTop;
+
+					window.addEventListener("scroll", () => {
+						if (window.scrollY >= designProjectOffsetTop) {
+							styleFilter.classList.add("sticky");
+						} else {
+							styleFilter.classList.remove("sticky");
+						}
+					});
+
+					console.log("Sticky Header Initialization Completed");
+				}
+			</script>
+		</main>
+	</body>
+</html>
+<style>
+	.image-container img {
+		max-width: 100%;
+		max-height: 100%;
+		object-fit: cover;
+	}
+
+	.swiper-pagination-progressbar {
+		background-color: rgba(0, 0, 0, 0.3);
+	}
+
+	.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+		background-color: #ffe449; /* 進度條填充色 */
+		height: 2px;
+	}
+
+	.swiper {
+		width: 100%;
+		height: 100%;
+	}
+
+	.swiper-slide {
+		text-align: center;
+		background-color: #8e8e8e;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.swiper-slide img {
+		display: block;
+		max-width: 100%;
+		max-height: 100%;
+		object-fit: contain;
+	}
+
+	.swiper {
+		width: 100%;
+		height: 300px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.mySwiper2 {
+		height: 80%;
+		width: 55%;
+		min-width: 960px;
+	}
+
+	.mySwiper {
+		height: 20%;
+		box-sizing: border-box;
+		padding: 10px 0;
+		width: 55%;
+		min-width: 960px;
+	}
+
+	.mySwiper .swiper-slide {
+		width: 25%;
+		height: 100%;
+		opacity: 0.4;
+	}
+
+	.mySwiper .swiper-slide-thumb-active {
+		opacity: 1;
+	}
+
+	.swiper-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #2e2e2ef1;
+		z-index: 1000;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.close-slider-btn {
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		background-color: #2e2e2e;
+		color: #fff;
+		border: none;
+		padding: 10px 15px;
+		font-size: 1rem;
+		cursor: pointer;
+		border-radius: 5px;
+		z-index: 10;
+	}
+
+	.close-slider-btn:hover {
+		color: red;
+	}
+
+	.swiper-portfolio-name {
+		text-align: center;
+		position: absolute;
+		bottom: 0;
+		left: 2rem;
+		z-index: 10;
+		font-size: 2rem;
+		font-weight: 400;
+		font-style: normal;
+		color: #fff;
+	}
+
+	@media screen and (max-width: 1199px) {
+		.close-slider-btn {
+			opacity: 0.7;
+		}
+	}
+
+	@media screen and (max-width: 960px) {
+		.mySwiper2 {
+			width: 100%;
+			min-width: 370px;
+		}
+
+		.mySwiper {
+			width: 100%;
+			min-width: 370px;
+		}
+	}
+</style>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const abbrElement = document.querySelector("abbr[data-title]");
+
+		if (abbrElement) {
+			abbrElement.addEventListener("click", function () {
+				window.location.href = "index.html";
+			});
+		}
+	});
+</script>
+
+<script>
+	(function () {
+		let prevPos = 0;
+		const header = document.querySelector("header");
+		const styleFilter = document.querySelector(".style-filter");
+		if (!header || !styleFilter) return;
+		let throttleTimeout;
+
+		const getDocHeight = () => document.documentElement.scrollHeight;
+		const getWinHeight = () => window.innerHeight;
+
+		window.addEventListener("scroll", function () {
+			if (throttleTimeout) return;
+
+			throttleTimeout = setTimeout(() => {
+				const currPos = Math.max(0, window.pageYOffset);
+
+				const isAtBottom = currPos + getWinHeight() >= getDocHeight() - 10;
+
+				if (isAtBottom) {
+					header.classList.remove("invisible");
+				} else {
+					const status = currPos > prevPos && currPos > header.offsetHeight;
+					header.classList[status ? "add" : "remove"]("invisible");
+				}
+
+				if (isAtBottom) {
+					styleFilter.classList.add("scrolled-bottom");
+				} else {
+					styleFilter.classList.remove("scrolled-bottom");
+				}
+
+				prevPos = currPos;
+				throttleTimeout = null;
+			}, 100);
+		});
+	})();
+</script>
+
+<script>
+	const styleFilter = document.querySelector(".style-filter");
+
+	let lastScrollY = window.scrollY;
+
+	window.addEventListener("scroll", () => {
+		const currentScrollY = window.scrollY;
+
+		if (currentScrollY < lastScrollY) {
+			styleFilter.classList.add("scrolled-up");
+		} else {
+			styleFilter.classList.remove("scrolled-up");
+		}
+
+		lastScrollY = currentScrollY;
+	});
+</script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+	AOS.init({
+		duration: 1500,
+	});
+</script>
+
+<script>
+	window.onload = () => {
+		const buttons = document.querySelectorAll(".btn");
+		buttons.forEach((button) => {
+			button.addEventListener("click", (event) => {
+				const circle = document.createElement("span");
+				const diameter = Math.max(button.clientWidth, button.clientHeight);
+				const radius = diameter / 2;
+
+				circle.style.width = circle.style.height = `${diameter}px`;
+				circle.style.left = `${event.offsetX - radius}px`;
+				circle.style.top = `${event.offsetY - radius}px`;
+				circle.classList.add("ripple");
+
+				const ripple = button.querySelector(".ripple");
+				if (ripple) {
+					ripple.remove();
+				}
+
+				button.appendChild(circle);
+			});
+		});
+	};
+
+	function filterPortfolios(category) {
+		const portfolios = document.querySelectorAll(".portfolio-size");
+		const buttons = document.querySelectorAll(".style-filter .btn");
+
+		const displayedPortfolio = document.querySelector("[data-selected='true']");
+		const displayedCategory = displayedPortfolio
+			? displayedPortfolio.getAttribute("data-category")
+			: null;
+
+		portfolios.forEach((portfolio) => {
+			const portfolioCategory = portfolio.getAttribute("data-category");
+
+			const shouldHide =
+				displayedCategory && portfolioCategory === displayedCategory;
+
+			if (
+				(category === "all" || portfolioCategory === category) &&
+				!shouldHide
+			) {
+				portfolio.style.display = "block";
+				portfolio.classList.add("aos-animate");
+			} else {
+				portfolio.style.display = "none";
+				portfolio.classList.remove("aos-animate");
+			}
+		});
+
+		buttons.forEach((button) => {
+			button.classList.remove("btn-selected");
+		});
+
+		const selectedButton = document.querySelector(
+			`.style-filter .btn[onclick="filterPortfolios('${category}')"]`
+		);
+		if (selectedButton) {
+			selectedButton.classList.add("btn-selected");
+		}
+
+		AOS.refresh();
+	}
+
+	function filterDisplayedPortfolios() {
+		const displayedPortfolio = document.querySelector("[data-selected='true']");
+
+		if (displayedPortfolio) {
+			const bottomPortfolios = document.querySelectorAll(
+				"#design-project .portfolio-size"
+			);
+
+			const displayedCategory =
+				displayedPortfolio.getAttribute("data-category");
+
+			bottomPortfolios.forEach((portfolio) => {
+				if (portfolio.getAttribute("data-category") === displayedCategory) {
+					portfolio.style.display = "none";
+				}
+			});
+		}
+	}
+
+	document.addEventListener("DOMContentLoaded", () => {
+		filterDisplayedPortfolios();
+
+		const buttons = document.querySelectorAll(".style-filter .btn");
+		buttons.forEach((button) => {
+			const category = button.getAttribute("onclick").match(/'([^']+)'/)[1];
+			button.onclick = () => filterPortfolios(category);
+		});
+	});
+</script>
+
+<!-- abbr -->
+<script>
+	let abbr = document.querySelector("abbr");
+	abbr.textContent = "";
+	let title = abbr.dataset.title;
+	let words = title.split(" ");
+	words.forEach((word) => {
+		let [initial, ...restLetters] = word.split("");
+		let initialSpan = document.createElement("span");
+		initialSpan.textContent = initial;
+		initialSpan.className = "initial";
+		abbr.append(initialSpan);
+		restLetters.forEach((letter) => {
+			let hiddenSpan = document.createElement("span");
+			hiddenSpan.textContent = letter;
+			hiddenSpan.className = "hidden";
+			abbr.append(hiddenSpan);
+		});
+	});
+</script>
+
+<!-- nav -->
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		const hamburgerMenu = document.querySelector(".hamburger-menu");
+		const navbar = document.querySelector(".navbar");
+
+		hamburgerMenu.addEventListener("click", () => {
+			navbar.classList.toggle("active");
+			hamburgerMenu.classList.toggle("active");
+		});
+
+		document.querySelectorAll(".nav-text").forEach((div) => {
+			div.addEventListener("click", () => {
+				const targetId = div.getAttribute("data-target");
+				const targetElement = document.querySelector(targetId);
+
+				if (targetElement) {
+					targetElement.scrollIntoView({
+						behavior: "smooth",
+						block: "start",
+					});
+				}
+
+				if (navbar.classList.contains("active")) {
+					navbar.classList.remove("active");
+					hamburgerMenu.classList.remove("active");
+				}
+			});
+		});
+	});
+</script>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+	let swiperThumbs;
+	let swiperMain;
+
+	function openSwiper(index) {
+		document.getElementById("swiperOverlay").style.display = "flex";
+
+		if (swiperMain && swiperThumbs) {
+			swiperMain.params.grabCursor = true;
+			console.log(swiperMain.params);
+			swiperMain.slideToLoop(index);
+			return;
+		}
+
+		swiperThumbs = new Swiper(".mySwiper", {
+			spaceBetween: 10,
+			slidesPerView: 4,
+			freeMode: true,
+			watchSlidesProgress: true,
+		});
+
+		swiperMain = new Swiper(".mySwiper2", {
+			effect: "cube",
+			spaceBetween: 10,
+			loop: true,
+			initialSlide: index,
+			simulateTouch: true,
+			allowTouchMove: true,
+			grabCursor: true,
+			autoplay: {
+				delay: 4000,
+				disableOnInteraction: false,
+			},
+			speed: 1500,
+			cubeEffect: {
+				shadow: true,
+				slideShadows: true,
+				shadowOffset: 20,
+				shadowScale: 0.94,
+			},
+			pagination: {
+				el: ".swiper-pagination",
+				type: "progressbar",
+			},
+			thumbs: {
+				swiper: swiperThumbs,
+			},
+		});
+	}
+
+	function closeSwiper() {
+		document.getElementById("swiperOverlay").style.display = "none";
+		if (swiperMain) swiperMain.slideTo(0);
+	}
+</script>
