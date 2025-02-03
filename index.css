@@ -277,8 +277,12 @@ a.company-title:hover {
 	border-top: 1px solid darkgray;
 }
 
+.tabs__content div {
+	display: flex;
+}
+
 .tabs__content p {
-	margin: 0.8rem;
+	margin: 0.4rem;
 }
 
 .tabs__radio:checked + .tabs__label {
