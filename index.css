@@ -911,11 +911,29 @@ a.company-title:hover {
 .image-container {
 	width: 60vw;
 	display: flex;
-	justify-content: center;
 	align-items: center;
+	justify-content: center;
 	background-color: #fff4f0;
 	margin: 3rem auto;
 	min-width: 960px;
+}
+
+.project-content {
+	width: 60vw;
+	line-height: 1.25;
+	margin: 0 auto;
+	min-width: 960px;
+	max-width: 1920px;
+}
+
+.mt {
+	margin-top: 1.5rem;
+}
+
+@media screen and (min-width: 1921px) {
+	.image-container {
+		width: 100%;
+	}
 }
 
 @media screen and (max-width: 1199px) {
@@ -970,6 +988,10 @@ a.company-title:hover {
 		width: 50vw;
 	}
 	.image-container {
+		width: 90vw;
+		min-width: 370px;
+	}
+	.project-content {
 		width: 90vw;
 		min-width: 370px;
 	}

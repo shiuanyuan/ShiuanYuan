@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>SY GROUP / 錦繡富饒</title>
+		<link rel="icon" href="./image/favicon.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="./index.css" />
+
+		<!-- swiper輪播套件 -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+		<!-- abbr 效果 -->
+		<link rel="stylesheet" href="./abbr.css" />
+		<!-- google fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&family=Zen+Antique&display=swap"
+			rel="stylesheet" />
+
+		<!-- AOS -->
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				if (!sessionStorage.getItem("cacheCleared")) {
+					sessionStorage.setItem("cacheCleared", "true");
+					const url = window.location.href.split("?")[0];
+					const newUrl = `${url}?clearCache=${new Date().getTime()}`;
+					window.location.replace(newUrl);
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<main>
+			<header>
+				<div class="company">
+					<img class="sy-logo" src="./image/SY-logo.png" alt="SY Logo" />
+					<a class="company-title" href="index.html">Shiuan Yuan</a>
+					<div class="logo-box">
+						<abbr data-title="Shiuan Yuan">Shiuan Yuan</abbr>
+					</div>
+				</div>
+				<button class="hamburger-menu" aria-label="Toggle menu">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+				<nav class="navbar">
+					<div class="nav-text" data-target="#top">top</div>
+					<div class="nav-text" data-target="#design-project">portfolio</div>
+					<div class="nav-text" data-target="#contact-us">contact</div>
+				</nav>
+			</header>
+
+			<div
+				class="project"
+				data-selected="true"
+				data-category="公共設計,錦繡富饒"
+				id="top">
+				<h2 class="project-name">錦繡富饒</h2>
+				<h3 class="project-type">公共設計</h3>
+				<p class="project-content mt">
+          隨著時光荏苒、時代更迭，生活環境的風貌不斷地蛻變，每當此際，總難免對逝去的過往歲月感到留戀、難以割捨。本案位於台灣以織品布料聞名的大稻埕（Da Dao Cheng），設計團隊巧妙運用新舊並存的手法，保留在地著名紡織業的舊時建築特色，結合現代美學，鑄就出雍容華貴的生活盛宴。採用透光玻璃作為窗體與隔間的建材，藉此將大稻埕的風華全面納入空間當中。擷取紡織的美學概念，以藝術的形式貫徹生活場域，展現藝術與人文相互迸發的火花。 
+        </p>
+				<div class="image-container">
+					<img
+						src="./image/front cover/portfolio-09/IMG_0901.jpg"
+						alt=""
+						onclick="openSwiper(0)" />
+				</div>
+				<div class="image-container">
+					<img
+						src="./image/front cover/portfolio-09/IMG_0902.jpg"
+						alt=""
+						onclick="openSwiper(1)" />
+				</div>
+				<p class="project-content">
+					沿著水廊相伴的迎賓大道走向室內大廳，猶如蠶絲紋路的大理石磁磚鋪設於地面，結合銅線編織而成的裝置藝術品串聯其中，完美演繹此處紡織業的百年歷史韻味。仿若水波蕩漾的紋理流淌於天花板，呼應建築外圍的水意，以及襯托出動態感。順著蜿蜒的螺旋梯拾級而上，採用天井手法將植物吊燈由天花板垂墜而下，宛若藝術品般點綴於樓梯間。緩步向內移動，選用恰如紡錘、水滴漣漪等造型，此起彼落的垂掛於中央休憩區的天花板，藉由光源照射呈現晶瑩剔透的美感。利用些許深色調的配置，調和空間比重。延伸至兩側仿若銀箔裝飾而成的格狀牆體，結合間接照明營造光彩熠熠、金碧輝煌的高貴質感。走進內側的私人會議包廂，以厚實的白色大理石桌檯搭配深色單人座沙發椅，塑造沉著穩重的氛圍。使用線性構建而成的燈飾，體現建築架構的意象，呼應此處的功能與意義。 
+				</p>
+				<div class="image-container">
+					<img
+						src="./image/front cover/portfolio-09/IMG_0903.jpg"
+						alt=""
+						onclick="openSwiper(2)" />
+				</div>
+				<div class="image-container">
+					<img
+						src="./image/front cover/portfolio-09/IMG_0904.jpg"
+						alt=""
+						onclick="openSwiper(3)" />
+				</div>
+				<p class="project-content">
+					本案採用新古典主義，打造傳統與現代彼此交融的時代美學。以傳統思潮作為起點，一絲一縷織就出專屬大稻埕的風采，展現無可取代的紡織文化魅力。承襲歷史脈絡與現代設計相互交織，開拓出永恆經典的建築風貌。 
+				</p>
+				<div class="image-container">
+					<img
+						src="./image/front cover/portfolio-09/IMG_0905.jpg"
+						alt=""
+						onclick="openSwiper(4)" />
+				</div>
+				<div class="image-container">
+					<img
+						src="./image/front cover/portfolio-09/IMG_0906.jpg"
+						alt=""
+						onclick="openSwiper(5)" />
+				</div>
+				<div class="image-container">
+					<img
+						src="./image/front cover/portfolio-09/IMG_0907.jpg"
+						alt=""
+						onclick="openSwiper(6)" />
+				</div>
+				<div class="image-container">
+					<img
+						src="./image/front cover/portfolio-09/IMG_0908.jpg"
+						alt=""
+						onclick="openSwiper(7)" />
+				</div>
+				<div class="image-container">
+					<img
+						src="./image/front cover/portfolio-09/IMG_0909.jpg"
+						alt=""
+						onclick="openSwiper(8)" />
+				</div>
+				<div class="image-container">
+					<img
+						src="./image/front cover/portfolio-09/IMG_0910.jpg"
+						alt=""
+						onclick="openSwiper(9)" />
+				</div>
+        <p class="project-content">
+					環保文 </br>
+          在建築中多處設置大面玻璃窗使自然光引進室內，令每個空間沐浴在陽光中，滿足對於光源的需求，進而減少燈具的使用、降低電力的消耗，達成節能減碳的效果。擁有良好的通風設計，從而避免空氣污染物滯留於室內，有效維持屋內的空氣品質。應用綠環境規劃設計，使用低污染的綠色建材、產品、設備，以及種植綠植等落實友善環境、永續經營的目標。 
+				</p>
+			</div>
+
+			<div class="design-project" id="design-project">
+				<h2 class="portfolio-list">其他作品</h2>
+				<div class="style-filter">
+					<button
+						href="javascript: void(0)"
+						onclick="filterPortfolios('all')"
+						class="btn btn-selected">
+						全部
+					</button>
+					<button
+						href="javascript: void(0)"
+						onclick="filterPortfolios('住宅空間')"
+						class="btn">
+						住宅空間
+					</button>
+					<button
+						href="javascript: void(0)"
+						onclick="filterPortfolios('公共設計')"
+						class="btn">
+						公共設計
+					</button>
+					<button
+						href="javascript: void(0)"
+						onclick="filterPortfolios('樣品屋')"
+						class="btn">
+						樣品屋
+					</button>
+				</div>
+				<div class="latest-works">
+					<a
+						class="portfolio-size"
+						data-category="住宅空間,岩光璀璨"
+						data-aos="zoom-in-up"
+						href="portfolio-yanguangcuican.html">
+						<img
+							class="latest-work-portfolio"
+							src="./image/front cover/portfolio-01/IMG_0101.jpg"
+							alt="portfolio 1" />
+						<div class="portfolio-name">
+							<p>岩光璀璨</p>
+							<p>Veiw more</p>
+						</div>
+					</a>
+					<a
+						class="portfolio-size"
+						data-category="住宅空間,夢語"
+						data-aos="zoom-in-up"
+						href="portfolio-mengyu.html">
+						<img
+							class="latest-work-portfolio"
+							src="./image/front cover/portfolio-02/IMG_0201.jpg"
+							alt="portfolio 2" />
+						<div class="portfolio-name">
+							<p>夢語</p>
+							<p>Veiw more</p>
+						</div>
+					</a>
+					<a
+						class="portfolio-size"
+						data-category="住宅空間,合矩"
+						data-aos="zoom-in-up"
+						href="portfolio-heju.html">
+						<img
+							class="latest-work-portfolio"
+							src="./image/front cover/portfolio-03/IMG_0301.jpg"
+							alt="portfolio 3" />
+						<div class="portfolio-name">
+							<p>合矩</p>
+							<p>Veiw more</p>
+						</div>
+					</a>
+					<a
+						class="portfolio-size"
+						data-category="住宅空間,人文薈萃"
+						data-aos="zoom-in-up"
+						href="portfolio-huicui.html">
+						<img
+							class="latest-work-portfolio"
+							src="./image/front cover/portfolio-04/IMG_0401.jpg"
+							alt="portfolio 4" />
+						<div class="portfolio-name">
+							<p>人文薈萃</p>
+							<p>Veiw more</p>
+						</div>
+					</a>
+					<a
+						class="portfolio-size"
+						data-category="公共設計,輕舟穩行"
+						data-aos="zoom-in-up"
+						href="portfolio-huicui.html">
+						<img
+							class="latest-work-portfolio"
+							src="./image/front cover/portfolio-05/IMG_0504.jpg"
+							alt="portfolio 5" />
+						<div class="portfolio-name">
+							<p>輕舟穩行</p>
+							<p>Veiw more</p>
+						</div>
+					</a>
+					<a
+						class="portfolio-size"
+						data-category="住宅空間,人文雅致"
+						data-aos="zoom-in-up"
+						href="portfolio-yazhi.html">
+						<img
+							class="latest-work-portfolio"
+							src="./image/front cover/portfolio-06/IMG_0601.jpg"
+							alt="portfolio 6" />
+						<div class="portfolio-name">
+							<p>人文雅致</p>
+							<p>Veiw more</p>
+						</div>
+					</a>
+					<a
+						class="portfolio-size"
+						data-category="住宅空間,湖畔煦風"
+						data-aos="zoom-in-up"
+						href="portfolio-zephyrus.html">
+						<img
+							class="latest-work-portfolio"
+							src="./image/front cover/portfolio-07/IMG_0701.jpg"
+							alt="portfolio 7" />
+						<div class="portfolio-name">
+							<p>湖畔煦風</p>
+							<p>Veiw more</p>
+						</div>
+					</a>
+					<a
+						class="portfolio-size"
+						data-category="公共設計,靜謐如詩"
+						data-aos="zoom-in-up"
+						href="portfolio-poeticserenity.html">
+						<img
+							class="latest-work-portfolio"
+							src="./image/front cover/portfolio-08/IMG_0809.jpg"
+							alt="portfolio 8" />
+						<div class="portfolio-name">
+							<p>靜謐如詩</p>
+							<p>Veiw more</p>
+						</div>
+					</a>
+					<a
+						class="portfolio-size"
+						data-category="公共設計,錦繡富饒"
+						data-aos="zoom-in-up"
+						href="portfolio-knittedwithaffluence.html">
+						<img
+							class="latest-work-portfolio"
+							src="./image/front cover/portfolio-09/IMG_0901.jpg"
+							alt="portfolio 9" />
+						<div class="portfolio-name">
+							<p>錦繡富饒</p>
+							<p>Veiw more</p>
+						</div>
+					</a>
+					<a
+						class="portfolio-size"
+						data-category="住宅空間,都市隱居"
+						data-aos="zoom-in-up"
+						href="portfolio-hiddeninthehustle.html">
+						<img
+							class="latest-work-portfolio"
+							src="./image/front cover/portfolio-10/IMG_1008.jpg"
+							alt="portfolio 10" />
+						<div class="portfolio-name">
+							<p>都市隱居</p>
+							<p>Veiw more</p>
+						</div>
+					</a>
+					<a
+						class="portfolio-size"
+						data-category="住宅空間,空白格"
+						data-aos="zoom-in-up"
+						href="portfolio-blankspace.html">
+						<img
+							class="latest-work-portfolio"
+							src="./image/front cover/portfolio-11/IMG_1104.jpg"
+							alt="portfolio 11" />
+						<div class="portfolio-name">
+							<p>空白格</p>
+							<p>Veiw more</p>
+						</div>
+					</a>
+					<a
+						class="portfolio-size"
+						data-category="樣品屋,光之盒"
+						data-aos="zoom-in-up"
+						data-aos-offset="60"
+						href="portfolio-boxoflight.html">
+						<img
+							class="latest-work-portfolio"
+							src="./image/front cover/portfolio-12/IMG_1206.jpg"
+							alt="portfolio 12" />
+						<div class="portfolio-name">
+							<p>光之盒</p>
+							<p>Veiw more</p>
+						</div>
+					</a>
+					<a
+						class="portfolio-size"
+						data-category="樣品屋,澄曦映居"
+						data-aos="zoom-in-up"
+						data-aos-offset="30"
+						href="portfolio-chengxiyingju.html">
+						<img
+							class="latest-work-portfolio"
+							src="./image/front cover/portfolio-13/IMG_1301.jpg"
+							alt="portfolio 13" />
+						<div class="portfolio-name">
+							<p>澄曦映居</p>
+							<p>Veiw more</p>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<div class="contant-info" id="contact-us">
+				<p>萱源實業有限公司</p>
+				<p>02-2921-7363</p>
+				<p>新北市三重區同安東街4號</p>
+				<p>shiuanyuan1@gmail.com</p>
+			</div>
+
+			<!-- Swiper -->
+			<div class="swiper-overlay" id="swiperOverlay" style="display: none">
+				<div class="swiper mySwiper2">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<img src="./image/front cover/portfolio-09/IMG_0901.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/portfolio-09/IMG_0902.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/portfolio-09/IMG_0903.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/portfolio-09/IMG_0904.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/portfolio-09/IMG_0905.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/portfolio-09/IMG_0906.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/portfolio-09/IMG_0907.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/portfolio-09/IMG_0908.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/portfolio-09/IMG_0909.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/portfolio-09/IMG_0910.jpg" />
+						</div>
+					</div>
+					<h2 class="swiper-portfolio-name">錦繡富饒</h2>
+				</div>
+				<div thumbsSlider="" class="swiper mySwiper">
+					<div class="swiper-pagination"></div>
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<img src="./image/front cover/portfolio-09/IMG_0901.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/portfolio-09/IMG_0902.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/portfolio-09/IMG_0903.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/portfolio-09/IMG_0904.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/portfolio-09/IMG_0905.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/portfolio-09/IMG_0906.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/portfolio-09/IMG_0907.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/portfolio-09/IMG_0908.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/portfolio-09/IMG_0909.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="./image/front cover/portfolio-09/IMG_0910.jpg" />
+						</div>
+					</div>
+				</div>
+				<button class="close-slider-btn" onclick="closeSwiper()">
+					close ╳
+				</button>
+			</div>
+
+			<script>
+				document.addEventListener("DOMContentLoaded", () => {
+					initializeStickyHeader();
+				});
+
+				window.addEventListener("load", () => {
+					initializeStickyHeader();
+				});
+
+				function initializeStickyHeader() {
+					const designProject = document.querySelector(".design-project");
+					const styleFilter = document.querySelector(".style-filter");
+
+					const designProjectOffsetTop = designProject.offsetTop;
+
+					window.addEventListener("scroll", () => {
+						if (window.scrollY >= designProjectOffsetTop) {
+							styleFilter.classList.add("sticky");
+						} else {
+							styleFilter.classList.remove("sticky");
+						}
+					});
+				}
+			</script>
+		</main>
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+		<!-- Swiper JS -->
+		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+		<script src="./portfolio.js"></script>
+	</body>
+</html>
+<style>
+	.image-container img {
+		max-width: 100%;
+		max-height: 100%;
+		object-fit: cover;
+	}
+
+	.swiper-pagination-progressbar {
+		background-color: rgba(0, 0, 0, 0.3);
+	}
+
+	.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+		background-color: #ffe449; /* 進度條填充色 */
+		height: 2px;
+	}
+
+	.swiper {
+		width: 100%;
+		height: 100%;
+	}
+
+	.swiper-slide {
+		text-align: center;
+		background-color: #8e8e8e;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.swiper-slide img {
+		display: block;
+		max-width: 100%;
+		max-height: 100%;
+		object-fit: contain;
+	}
+
+	.swiper {
+		width: 100%;
+		height: 300px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.mySwiper2 {
+		height: 80%;
+		width: 55%;
+		min-width: 960px;
+	}
+
+	.mySwiper {
+		height: 20%;
+		box-sizing: border-box;
+		padding: 10px 0;
+		width: 55%;
+		min-width: 960px;
+	}
+
+	.mySwiper .swiper-slide {
+		width: 25%;
+		height: 100%;
+		opacity: 0.4;
+	}
+
+	.mySwiper .swiper-slide-thumb-active {
+		opacity: 1;
+	}
+
+	.swiper-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #2e2e2ef1;
+		z-index: 1000;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.close-slider-btn {
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		background-color: #2e2e2e;
+		color: #fff;
+		border: none;
+		padding: 10px 15px;
+		font-size: 1rem;
+		cursor: pointer;
+		border-radius: 5px;
+		z-index: 10;
+	}
+
+	.close-slider-btn:hover {
+		color: red;
+	}
+
+	.swiper-portfolio-name {
+		text-align: center;
+		position: absolute;
+		bottom: 0;
+		left: 2rem;
+		z-index: 10;
+		font-size: 2rem;
+		font-weight: 400;
+		font-style: normal;
+		color: #fff;
+	}
+
+	@media screen and (max-width: 1199px) {
+		.close-slider-btn {
+			opacity: 0.7;
+		}
+	}
+
+	@media screen and (max-width: 960px) {
+		.mySwiper2 {
+			width: 100%;
+			min-width: 370px;
+		}
+
+		.mySwiper {
+			width: 100%;
+			min-width: 370px;
+		}
+	}
+</style>
