@@ -1,3 +1,9 @@
+:root {
+	--title-color: #0070d8;
+	--active-color: #003566;
+	--portfolio-color: #005a9c;
+}
+
 body {
 	background: #fff4f0;
 	margin: 0;
@@ -175,7 +181,7 @@ a.company-title:hover {
 	color: #2e2e2e;
 	font-size: 1.6rem;
 	padding: 0.2rem;
-
+	cursor: pointer;
 	text-shadow: 1px 1px 2px #b0b0b0, -1px -1px 2px #b0b0b0, -1px 1px 2px #b0b0b0,
 		1px -1px 2px #b0b0b0;
 }
@@ -260,7 +266,7 @@ a.company-title:hover {
 .tabs__label {
 	padding: 10px 16px;
 	cursor: pointer;
-	color: #0070d8;
+	color: var(--title-color);
 }
 
 .tabs__radio {
@@ -287,8 +293,8 @@ a.company-title:hover {
 
 .tabs__radio:checked + .tabs__label {
 	font-weight: bold;
-	color: #003566;
-	border-bottom: 2px solid #003566;
+	color: var(--active-color);
+	border-bottom: 2px solid var(--active-color);
 }
 
 .tabs__radio:checked + .tabs__label + .tabs__content {
@@ -321,7 +327,7 @@ a.company-title:hover {
 .portfolio-list {
 	text-align: center;
 	font-weight: 400;
-	color: #0070d8;
+	color: var(--title-color);
 	padding: 1rem;
 }
 
@@ -372,9 +378,10 @@ a.company-title:hover {
 	overflow: hidden;
 	transition: background 400ms;
 	padding: 10px 20px;
+	cursor: pointer;
 }
 .btn:hover {
-	color: #003566;
+	color: var(--active-color);
 }
 .btn .ripple {
 	position: absolute;
@@ -426,7 +433,7 @@ a.company-title:hover {
 	top: 0;
 	z-index: 10;
 	background-color: rgba(216, 222, 233, 0.85);
-	color: #005a9c;
+	color: var(--portfolio-color);
 	opacity: 0;
 	transition: opacity 0.3s ease;
 	font-size: 1.5rem;
@@ -459,7 +466,7 @@ a.company-title:hover {
 .workflow {
 	text-align: center;
 	font-weight: 400;
-	color: #0070d8;
+	color: var(--title-color);
 }
 
 .workflow__bg {
@@ -896,7 +903,7 @@ a.company-title:hover {
 	text-align: center;
 	padding-top: 4rem;
 	font-size: 2rem;
-	color: #0070d8;
+	color: var(--title-color);
 	margin: 0;
 }
 
