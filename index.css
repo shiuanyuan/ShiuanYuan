@@ -197,6 +197,7 @@ a.company-title:hover {
 	width: 100vw;
 	height: 100vh;
 	object-fit: cover;
+	max-width: 1920px;
 }
 
 .mySwiper .swiper-slide {
@@ -479,6 +480,7 @@ a.company-title:hover {
 	opacity: 0;
 	clip-path: polygon(0% 100%, 0% 100%, 0% 100%);
 	transition: opacity 0.5s ease-out;
+	max-width: 1920px;
 }
 
 .workflow__bg.animate {
@@ -886,6 +888,21 @@ a.company-title:hover {
 	}
 }
 
+.qrcode {
+	margin: 2rem 0;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.qrcode img {
+	margin: 10px;
+	width: 360px;
+	height: 360px;
+	border-radius: 2.5rem;
+}
+
 .contant-info {
 	font-family: "Poppins", sans-serif;
 	font-size: 1.2rem;
@@ -923,6 +940,7 @@ a.company-title:hover {
 	background-color: #fff4f0;
 	margin: 3rem auto;
 	min-width: 960px;
+	cursor: pointer;
 }
 
 .project-content {
@@ -940,6 +958,18 @@ a.company-title:hover {
 @media screen and (min-width: 1921px) {
 	.image-container {
 		width: 100%;
+	}
+	.award-section {
+		width: 100%;
+	}
+	.latest-works {
+		width: 100%;
+	}
+	.workflow-item-content {
+		width: 800px;
+	}
+	.contant-info {
+		min-height: auto;
 	}
 }
 
