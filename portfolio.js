@@ -88,22 +88,28 @@ window.onload = () => {
 	});
 };
 
+// 篩選作品邏輯
 function filterPortfolios(category) {
 	const portfolios = document.querySelectorAll(".portfolio-size");
 	const buttons = document.querySelectorAll(".style-filter .btn");
 
-	const displayedPortfolio = document.querySelector("[data-selected='true']");
-	const displayedCategory = displayedPortfolio
-		? displayedPortfolio.getAttribute("data-category")
+	// 取得主作品分類
+	const displayedProject = document.querySelector(
+		".project[data-selected='true']"
+	);
+	const displayedCategory = displayedProject
+		? displayedProject.getAttribute("data-category")
 		: null;
 
 	portfolios.forEach((portfolio) => {
 		const portfolioCategory = portfolio.getAttribute("data-category");
+		const categoryArray = portfolioCategory.split(",");
+		const isExactSame = portfolioCategory === displayedCategory;
 
-		const shouldHide =
-			displayedCategory && portfolioCategory === displayedCategory;
+		const shouldShow =
+			(category === "all" || categoryArray.includes(category)) && !isExactSame;
 
-		if ((category === "all" || portfolioCategory === category) && !shouldHide) {
+		if (shouldShow) {
 			portfolio.style.display = "block";
 			portfolio.classList.add("aos-animate");
 		} else {
@@ -112,30 +118,27 @@ function filterPortfolios(category) {
 		}
 	});
 
-	buttons.forEach((button) => {
-		button.classList.remove("btn-selected");
+	// 更新按鈕樣式
+	buttons.forEach((btn) => {
+		btn.classList.remove("btn-selected");
 	});
-
-	const selectedButton = document.querySelector(
-		`.style-filter .btn[onclick="filterPortfolios('${category}')"]`
+	const selectedBtn = [...buttons].find(
+		(btn) => btn.getAttribute("data-category") === category
 	);
-	if (selectedButton) {
-		selectedButton.classList.add("btn-selected");
-	}
+	if (selectedBtn) selectedBtn.classList.add("btn-selected");
 
 	AOS.refresh();
 }
 
+// 頁面初始化時先隱藏主作品區塊重複的下方作品
 function filterDisplayedPortfolios() {
-	const displayedPortfolio = document.querySelector("[data-selected='true']");
+	const displayedProject = document.querySelector(
+		".project[data-selected='true']"
+	);
+	const displayedCategory = displayedProject?.getAttribute("data-category");
 
-	if (displayedPortfolio) {
-		const bottomPortfolios = document.querySelectorAll(
-			"#design-project .portfolio-size"
-		);
-
-		const displayedCategory = displayedPortfolio.getAttribute("data-category");
-
+	if (displayedCategory) {
+		const bottomPortfolios = document.querySelectorAll(".portfolio-size");
 		bottomPortfolios.forEach((portfolio) => {
 			if (portfolio.getAttribute("data-category") === displayedCategory) {
 				portfolio.style.display = "none";
@@ -144,13 +147,17 @@ function filterDisplayedPortfolios() {
 	}
 }
 
+// 等待 DOM 載入完再執行初始化
 document.addEventListener("DOMContentLoaded", () => {
-	filterDisplayedPortfolios();
+	AOS.init(); // 初始化動畫套件
 
+	filterDisplayedPortfolios(); // 隱藏與主作品相同的項目
+
+	// 綁定每個按鈕的篩選功能
 	const buttons = document.querySelectorAll(".style-filter .btn");
 	buttons.forEach((button) => {
-		const category = button.getAttribute("onclick").match(/'([^']+)'/)[1];
-		button.onclick = () => filterPortfolios(category);
+		const category = button.getAttribute("data-category");
+		button.addEventListener("click", () => filterPortfolios(category));
 	});
 });
 
