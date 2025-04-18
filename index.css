@@ -2,13 +2,13 @@
 	--title-color: #0070d8;
 	--active-color: #003566;
 	--portfolio-color: #005a9c;
-  --bg-color: #fffbfb;
+	--bg-color: #fffbfb;
 }
 
 body {
-	/* background: #fff4f0; */
-  background: var(--bg-color);
-  margin: 0;
+	/* background: #fff4f0; 原底色 */
+	background: var(--bg-color);
+	margin: 0;
 	overflow-x: hidden;
 	font-family: "Poppins", sans-serif;
 	font-weight: 400;
@@ -294,6 +294,10 @@ a.company-title:hover {
 	margin: 0.4rem;
 }
 
+.award-item-year {
+	width: 40px;
+}
+
 .tabs__radio:checked + .tabs__label {
 	font-weight: bold;
 	color: var(--active-color);
@@ -337,7 +341,7 @@ a.company-title:hover {
 .style-filter {
 	text-align: center;
 	padding: 1rem;
-	background-color:var(--bg-color);
+	background-color: var(--bg-color);
 }
 
 .style-filter.sticky {
@@ -345,7 +349,7 @@ a.company-title:hover {
 	top: 0;
 	left: 0;
 	right: 0;
-	background-color:var(--bg-color);
+	background-color: var(--bg-color);
 	padding: 0.75rem 0;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	z-index: 99;
@@ -354,7 +358,7 @@ a.company-title:hover {
 .style-filter.sticky.scrolled-up,
 .style-filter.sticky.scrolled-bottom {
 	padding-top: 70px;
-	background-color:var(--bg-color);
+	background-color: var(--bg-color);
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
@@ -371,7 +375,7 @@ a.company-title:hover {
 	position: relative;
 	min-width: 100px;
 	border: 0;
-	background-color:var(--bg-color);
+	background-color: var(--bg-color);
 	color: gray;
 	font-size: 1rem;
 	font-weight: bold;
@@ -403,7 +407,7 @@ a.company-title:hover {
 }
 
 .btn-selected {
-	background-color:var(--bg-color);
+	background-color: var(--bg-color);
 	color: #2e2e2e;
 }
 
@@ -457,7 +461,7 @@ a.company-title:hover {
 	justify-content: center;
 	text-align: center;
 	position: relative;
-	background-color:var(--bg-color);
+	background-color: var(--bg-color);
 	color: #2e2e2e;
 	font-family: "Poppins", sans-serif;
 }
@@ -652,7 +656,7 @@ a.company-title:hover {
 .workflow-section2 {
 	display: none;
 	height: auto;
-	background-color:var(--bg-color);
+	background-color: var(--bg-color);
 	color: #2e2e2e;
 	margin: 0 auto;
 }
@@ -729,7 +733,7 @@ a.company-title:hover {
 	color: white;
 	border: 7px solid #b0b0b0;
 	border-radius: 100%;
-	background-color:var(--bg-color);
+	background-color: var(--bg-color);
 	background-size: contain;
 	background-repeat: no-repeat;
 }
@@ -939,7 +943,7 @@ a.company-title:hover {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color:var(--bg-color);
+	background-color: var(--bg-color);
 	margin: 3rem auto;
 	min-width: 960px;
 	cursor: pointer;
@@ -1049,7 +1053,7 @@ a.company-title:hover {
 	}
 
 	.about-sy p {
-		font-size: 1.1rem;
+		font-size: 1.3rem;
 	}
 
 	.award-section {
