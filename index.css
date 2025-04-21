@@ -294,8 +294,17 @@ a.company-title:hover {
 	margin: 0.4rem;
 }
 
+.award-area {
+	margin: 0.8rem 0;
+}
+
 .award-item-year {
 	width: 40px;
+	text-align: center;
+}
+
+.award-item-name {
+	flex-direction: column;
 }
 
 .tabs__radio:checked + .tabs__label {
