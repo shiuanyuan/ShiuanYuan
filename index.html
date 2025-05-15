@@ -729,6 +729,31 @@
 					><img src="./image/QRCode/sy_ig.webp" alt="sydesign_ig"
 				/></a>
 			</div>
+
+			<script>
+				document.addEventListener("DOMContentLoaded", () => {
+					initializeStickyHeader();
+				});
+
+				window.addEventListener("load", () => {
+					initializeStickyHeader();
+				});
+
+				function initializeStickyHeader() {
+					const designProject = document.querySelector(".design-project");
+					const styleFilter = document.querySelector(".style-filter");
+
+					const designProjectOffsetTop = designProject.offsetTop;
+
+					window.addEventListener("scroll", () => {
+						if (window.scrollY >= designProjectOffsetTop) {
+							styleFilter.classList.add("sticky");
+						} else {
+							styleFilter.classList.remove("sticky");
+						}
+					});
+				}
+			</script>
 		</main>
 
 		<div class="contant-info" id="contact-us">
