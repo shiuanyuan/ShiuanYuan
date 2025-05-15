@@ -323,10 +323,23 @@ a.company-title:hover {
 	align-items: center;
 	gap: 1rem;
 	flex-wrap: wrap;
+	padding: 0 3rem;
 }
 
-.award-img img {
+.award-p {
 	max-width: 100px;
+	height: auto;
+	object-fit: contain;
+}
+
+.award-p-m {
+	max-width: 150px;
+	height: auto;
+	object-fit: contain;
+}
+
+.award-p-l {
+	max-width: 280px;
 	height: auto;
 	object-fit: contain;
 }
@@ -1100,6 +1113,10 @@ a.company-title:hover {
 
 	.tabs {
 		padding: 1rem 10px;
+	}
+
+	.award-img {
+		padding: 0 10px;
 	}
 
 	.style-filter {
