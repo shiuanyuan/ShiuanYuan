@@ -268,9 +268,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Initialize Swiper
 var swiper = new Swiper(".mySwiper", {
-	spaceBetween: 30,
-	effect: "fade",
 	loop: true,
+	effect: "fade",
+	speed: 1500,
 	autoplay: {
 		delay: 5000,
 		disableOnInteraction: false,
@@ -279,14 +279,40 @@ var swiper = new Swiper(".mySwiper", {
 		nextEl: ".swiper-button-next",
 		prevEl: ".swiper-button-prev",
 	},
-	pagination: {
-		el: ".swiper-pagination",
-		clickable: true,
+	on: {
+		init: function () {
+			this.autoplay.stop();
+			const activeSlide = this.slides[this.activeIndex];
+			const video = activeSlide.querySelector("video");
+			if (video) {
+				video.currentTime = 0;
+				video.play();
+				video.onended = () => {
+					this.slideNext();
+					this.autoplay.start();
+				};
+			}
+		},
+		slideChangeTransitionStart: function () {
+			const videos = document.querySelectorAll(".mySwiper video");
+			videos.forEach((video) => {
+				video.pause();
+				video.currentTime = 0;
+			});
+		},
+		slideChangeTransitionEnd: function () {
+			const activeSlide = this.slides[this.activeIndex];
+			const video = activeSlide.querySelector("video");
+			if (video) {
+				this.autoplay.stop();
+				video.play();
+				video.onended = () => {
+					this.slideNext();
+					this.autoplay.start();
+				};
+			}
+		},
 	},
-	fadeEffect: {
-		crossFade: true,
-	},
-	speed: 1500,
 });
 
 // AOS
