@@ -46,10 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	const targetSection = document.querySelector("#design-project");
 
 	if (header && targetSection) {
-		const styleFilterTop = header.offsetTop;
 		const headerHeight = header.getBoundingClientRect().height;
 
-		const enterThreshold = 10;
 		const exitThreshold = 150;
 
 		let prevScrollY = window.scrollY;
@@ -74,12 +72,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 			const scrollY = lastKnownScrollY;
 
-			const targetSectionBottom =
-				targetSection.offsetTop + targetSection.offsetHeight;
+			const targetTop = targetSection.offsetTop;
+			const targetBottom = targetTop + targetSection.offsetHeight;
 
 			const isNowWithinStickyRange =
-				scrollY > styleFilterTop - enterThreshold &&
-				scrollY < targetSectionBottom - headerHeight - exitThreshold;
+				scrollY >= targetTop &&
+				scrollY < targetBottom - headerHeight - exitThreshold;
 
 			if (isNowWithinStickyRange !== isWithinStickyRange) {
 				isWithinStickyRange = isNowWithinStickyRange;
