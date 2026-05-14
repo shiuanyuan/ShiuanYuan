@@ -1,230 +1,133 @@
-// abbr
-document.addEventListener("DOMContentLoaded", function () {
-	const abbrElement = document.querySelector("abbr[data-title]");
-
-	if (abbrElement) {
-		abbrElement.addEventListener("click", function () {
-			window.location.href = "index.html";
-		});
-	}
+document.addEventListener("DOMContentLoaded", () => {
+	SYCommon.initSharedUI();
+	initHeaderAndFilterScroll();
+	filterDisplayedPortfolios();
+	initPortfolioFilters();
+	initPortfolioPageMotion();
 });
 
-// style-filter 功能列
-(function () {
+function initHeaderAndFilterScroll() {
 	let prevPos = 0;
 	const header = document.querySelector("header");
 	const styleFilter = document.querySelector(".style-filter");
 	if (!header || !styleFilter) return;
-	let throttleTimeout;
 
+	let throttleTimeout;
 	const getDocHeight = () => document.documentElement.scrollHeight;
 	const getWinHeight = () => window.innerHeight;
 
-	window.addEventListener("scroll", function () {
+	window.addEventListener("scroll", () => {
 		if (throttleTimeout) return;
 
 		throttleTimeout = setTimeout(() => {
 			const currPos = Math.max(0, window.pageYOffset);
-
 			const isAtBottom = currPos + getWinHeight() >= getDocHeight() - 10;
+			const isScrollingDown = currPos > prevPos && currPos > header.offsetHeight;
 
-			if (isAtBottom) {
-				header.classList.remove("invisible");
-			} else {
-				const status = currPos > prevPos && currPos > header.offsetHeight;
-				header.classList[status ? "add" : "remove"]("invisible");
-			}
-
-			if (isAtBottom) {
-				styleFilter.classList.add("scrolled-bottom");
-			} else {
-				styleFilter.classList.remove("scrolled-bottom");
-			}
+			header.classList[!isAtBottom && isScrollingDown ? "add" : "remove"](
+				"invisible"
+			);
+			styleFilter.classList.toggle("scrolled-bottom", isAtBottom);
 
 			prevPos = currPos;
 			throttleTimeout = null;
 		}, 100);
 	});
-})();
 
-// style-filter 功能列 避開header
-const styleFilter = document.querySelector(".style-filter");
-
-let lastScrollY = window.scrollY;
-
-window.addEventListener("scroll", () => {
-	const currentScrollY = window.scrollY;
-
-	if (currentScrollY < lastScrollY) {
-		styleFilter.classList.add("scrolled-up");
-	} else {
-		styleFilter.classList.remove("scrolled-up");
-	}
-
-	lastScrollY = currentScrollY;
-});
-
-// style-filter btn 功能
-window.onload = () => {
-	const buttons = document.querySelectorAll(".btn");
-	buttons.forEach((button) => {
-		button.addEventListener("click", (event) => {
-			const circle = document.createElement("span");
-			const diameter = Math.max(button.clientWidth, button.clientHeight);
-			const radius = diameter / 2;
-
-			circle.style.width = circle.style.height = `${diameter}px`;
-			circle.style.left = `${event.offsetX - radius}px`;
-			circle.style.top = `${event.offsetY - radius}px`;
-			circle.classList.add("ripple");
-
-			const ripple = button.querySelector(".ripple");
-			if (ripple) {
-				ripple.remove();
-			}
-
-			button.appendChild(circle);
-		});
+	let lastScrollY = window.scrollY;
+	window.addEventListener("scroll", () => {
+		const currentScrollY = window.scrollY;
+		styleFilter.classList.toggle("scrolled-up", currentScrollY < lastScrollY);
+		lastScrollY = currentScrollY;
 	});
-};
+}
 
-// 篩選作品邏輯
 function filterPortfolios(category) {
 	const portfolios = document.querySelectorAll(".portfolio-size");
 	const buttons = document.querySelectorAll(".style-filter .btn");
-
-	// 取得主作品分類
-	const displayedProject = document.querySelector(
-		".project[data-selected='true']"
-	);
-	const displayedCategory = displayedProject
-		? displayedProject.getAttribute("data-category")
-		: null;
+	const visibleItems = [];
+	const displayedProject = document.querySelector(".project[data-selected='true']");
+	const displayedCategory = displayedProject?.getAttribute("data-category");
 
 	portfolios.forEach((portfolio) => {
 		const portfolioCategory = portfolio.getAttribute("data-category");
 		const categoryArray = portfolioCategory.split(",");
 		const isExactSame = portfolioCategory === displayedCategory;
-
 		const shouldShow =
 			(category === "all" || categoryArray.includes(category)) && !isExactSame;
 
-		if (shouldShow) {
-			portfolio.style.display = "block";
-			portfolio.classList.add("aos-animate");
-		} else {
-			portfolio.style.display = "none";
-			portfolio.classList.remove("aos-animate");
-		}
+		portfolio.style.display = shouldShow ? "block" : "none";
+		portfolio.classList.toggle("aos-animate", shouldShow);
+		if (shouldShow) visibleItems.push(portfolio);
 	});
 
-	// 更新按鈕樣式
-	buttons.forEach((btn) => {
-		btn.classList.remove("btn-selected");
-	});
+	buttons.forEach((btn) => btn.classList.remove("btn-selected"));
 	const selectedBtn = [...buttons].find(
 		(btn) => btn.getAttribute("data-category") === category
 	);
 	if (selectedBtn) selectedBtn.classList.add("btn-selected");
 
-	AOS.refresh();
+	SYCommon.animateVisibleItems(visibleItems);
 }
 
-// 頁面初始化時先隱藏主作品區塊重複的下方作品
 function filterDisplayedPortfolios() {
-	const displayedProject = document.querySelector(
-		".project[data-selected='true']"
-	);
+	const displayedProject = document.querySelector(".project[data-selected='true']");
 	const displayedCategory = displayedProject?.getAttribute("data-category");
+	if (!displayedCategory) return;
 
-	if (displayedCategory) {
-		const bottomPortfolios = document.querySelectorAll(".portfolio-size");
-		bottomPortfolios.forEach((portfolio) => {
-			if (portfolio.getAttribute("data-category") === displayedCategory) {
-				portfolio.style.display = "none";
-			}
-		});
-	}
+	document.querySelectorAll(".portfolio-size").forEach((portfolio) => {
+		if (portfolio.getAttribute("data-category") === displayedCategory) {
+			portfolio.style.display = "none";
+		}
+	});
 }
 
-// 等待 DOM 載入完再執行初始化
-document.addEventListener("DOMContentLoaded", () => {
-	AOS.init(); // 初始化動畫套件
-
-	filterDisplayedPortfolios(); // 隱藏與主作品相同的項目
-
-	// 綁定每個按鈕的篩選功能
-	const buttons = document.querySelectorAll(".style-filter .btn");
-	buttons.forEach((button) => {
+function initPortfolioFilters() {
+	document.querySelectorAll(".style-filter .btn").forEach((button) => {
 		const category = button.getAttribute("data-category");
-		button.addEventListener("click", () => filterPortfolios(category));
+		if (category) button.addEventListener("click", () => filterPortfolios(category));
 	});
-});
+}
 
-// abbr
-let abbr = document.querySelector("abbr");
-abbr.textContent = "";
-let title = abbr.dataset.title;
-let words = title.split(" ");
-words.forEach((word) => {
-	let [initial, ...restLetters] = word.split("");
-	let initialSpan = document.createElement("span");
-	initialSpan.textContent = initial;
-	initialSpan.className = "initial";
-	abbr.append(initialSpan);
-	restLetters.forEach((letter) => {
-		let hiddenSpan = document.createElement("span");
-		hiddenSpan.textContent = letter;
-		hiddenSpan.className = "hidden";
-		abbr.append(hiddenSpan);
-	});
-});
-
-// nav
-document.addEventListener("DOMContentLoaded", () => {
-	const hamburgerMenu = document.querySelector(".hamburger-menu");
-	const navbar = document.querySelector(".navbar");
-
-	hamburgerMenu.addEventListener("click", () => {
-		navbar.classList.toggle("active");
-		hamburgerMenu.classList.toggle("active");
-	});
-
-	document.querySelectorAll(".nav-text").forEach((div) => {
-		div.addEventListener("click", () => {
-			const targetId = div.getAttribute("data-target");
-			const targetElement = document.querySelector(targetId);
-
-			if (targetElement) {
-				targetElement.scrollIntoView({
-					behavior: "smooth",
-					block: "start",
-				});
+function initPortfolioPageMotion() {
+	SYCommon.withGSAP((gsap) => {
+		gsap.fromTo(
+			[".project-name", ".project-type", ".project .image-container:first-of-type"],
+			{ autoAlpha: 0, y: 30 },
+			{
+				autoAlpha: 1,
+				y: 0,
+				duration: 0.8,
+				ease: "power3.out",
+				stagger: 0.12,
 			}
-
-			if (navbar.classList.contains("active")) {
-				navbar.classList.remove("active");
-				hamburgerMenu.classList.remove("active");
-			}
-		});
+		);
 	});
-});
 
-// AOS
-AOS.init({
-	duration: 1500,
-});
+	SYCommon.revealOnEnter(".project-content, .project .image-container:not(:first-of-type)", {
+		y: 34,
+		scale: 0.985,
+		threshold: 0.12,
+	});
+	SYCommon.revealOnEnter(".portfolio-size", { y: 36, scale: 0.98, threshold: 0.12 });
+	SYCommon.initImageHover(".image-container img");
+	SYCommon.initPortfolioCardMotion();
+	SYCommon.initTextMasking(
+		".project-content, .portfolio-name p, .contant-info p",
+		{ threshold: 0.24, duration: 1 }
+	);
+}
 
-// Initialize Swiper
 let swiperThumbs;
 let swiperMain;
 
 function openSwiper(index) {
-	document.getElementById("swiperOverlay").style.display = "flex";
+	const overlay = document.getElementById("swiperOverlay");
+	overlay.style.display = "flex";
+	SYCommon.animateOverlayOpen(overlay, ".swiper-overlay .mySwiper2");
 
 	if (swiperMain && swiperThumbs) {
 		swiperMain.params.grabCursor = true;
-		console.log(swiperMain.params);
 		swiperMain.slideToLoop(index);
 		return;
 	}
@@ -266,6 +169,10 @@ function openSwiper(index) {
 }
 
 function closeSwiper() {
-	document.getElementById("swiperOverlay").style.display = "none";
+	const overlay = document.getElementById("swiperOverlay");
+	SYCommon.animateOverlayClose(overlay, () => {
+		overlay.style.display = "none";
+	});
+
 	if (swiperMain) swiperMain.slideTo(0);
 }
