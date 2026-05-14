@@ -26,6 +26,25 @@ body {
 	font-size: 1rem;
 }
 
+/* 行動裝置點擊時的預設藍色高亮；桌機滑鼠點擊不必顯示外框，鍵盤仍用 :focus-visible */
+a,
+button,
+input,
+label,
+textarea,
+summary {
+	-webkit-tap-highlight-color: transparent;
+}
+
+:focus:not(:focus-visible) {
+	outline: none;
+}
+
+:focus-visible {
+	outline: 2px solid var(--active-color);
+	outline-offset: 3px;
+}
+
 .viewport-section {
 	scroll-margin-top: 84px;
 }
@@ -934,10 +953,21 @@ a.company-title:hover {
 
 .workflow-section2 {
 	display: none;
+	position: relative;
 	height: auto;
 	background-color: var(--bg-color);
 	color: var(--text-color);
 	margin: 0 auto;
+	padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+/* 手機／平板區塊內標題勿沿用桌機 .workflow 的絕對定位 */
+.workflow-section2 .text-center .workflow {
+	position: static;
+	top: auto;
+	left: auto;
+	width: 100%;
+	margin: 0 0 1.5rem;
 }
 
 .workflow-section2 h4 {
@@ -1339,6 +1369,103 @@ a.company-title:hover {
 	.workflow-section2 {
 		display: block;
 	}
+
+	/* 手機／平板：單欄時間軸，取代 float／雙欄 zig-zag */
+	.workflow-section2 .container {
+		max-width: 100%;
+		padding-left: clamp(0.75rem, 3vw, 1.25rem);
+		padding-right: clamp(0.75rem, 3vw, 1.25rem);
+		box-sizing: border-box;
+	}
+
+	.workflow-section2 .timeline:before {
+		left: 36px;
+		bottom: 1.5rem;
+		margin-left: 0;
+	}
+
+	.workflow-section2 .timeline > li {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+		gap: 0.75rem;
+		margin-bottom: clamp(1.5rem, 4vw, 2rem);
+		min-height: 0;
+	}
+
+	.workflow-section2 .timeline > li::before,
+	.workflow-section2 .timeline > li::after {
+		display: none;
+	}
+
+	.workflow-section2 .timeline > li .timeline-image {
+		position: relative;
+		left: auto;
+		top: auto;
+		flex-shrink: 0;
+		width: 72px;
+		height: 72px;
+		margin-left: 0;
+		border-width: 5px;
+	}
+
+	.workflow-section2 .timeline > li .timeline-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 50%;
+	}
+
+	.workflow-section2 .timeline > li .timeline-panel {
+		float: none;
+		width: 1%;
+		flex: 1 1 0;
+		min-width: 0;
+		padding: 0.1rem 0 0 0.35rem;
+		text-align: left;
+	}
+
+	.workflow-section2 .timeline > li.timeline-inverted > .timeline-panel {
+		float: none;
+		padding: 0.1rem 0 0 0.35rem;
+		text-align: left;
+	}
+
+	.workflow-section2 .timeline > li .timeline-panel:before,
+	.workflow-section2 .timeline > li .timeline-panel:after,
+	.workflow-section2 .timeline > li.timeline-inverted > .timeline-panel:before,
+	.workflow-section2 .timeline > li.timeline-inverted > .timeline-panel:after {
+		display: none;
+	}
+
+	.workflow-section2 .timeline .timeline-heading h4 {
+		font-size: clamp(1.02rem, 3.6vw, 1.22rem);
+		line-height: 1.28;
+		margin: 0 0 0.45rem;
+		color: var(--title-color);
+	}
+
+	.workflow-section2 .timeline-body p {
+		font-size: clamp(0.9rem, 2.9vw, 1rem);
+		line-height: 1.58;
+		color: var(--text-color);
+	}
+
+	.workflow-section2 .workflow-line-split-line {
+		display: block;
+		overflow: hidden;
+		padding-bottom: 0.06em;
+	}
+
+	.workflow-section2 .workflow-line-split-line__inner {
+		display: block;
+		will-change: transform;
+	}
+
+	.workflow-section2 .workflow-line-split-measure {
+		display: inline-block;
+		white-space: pre-wrap;
+	}
 }
 
 @media screen and (max-width: 960px) {
@@ -1447,12 +1574,23 @@ a.company-title:hover {
 	.style-filter {
 		display: flex;
 		justify-content: center;
-		align-items: center;
+		align-items: stretch;
 		flex-wrap: wrap;
+		gap: 0.45rem 0.5rem;
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+		box-sizing: border-box;
 	}
 
-	.btn {
-		width: 34%;
+	.style-filter .btn {
+		flex: 0 0 calc(50% - 0.25rem);
+		width: calc(50% - 0.25rem);
+		max-width: calc(50% - 0.25rem);
+		min-width: 0;
+		box-sizing: border-box;
+		white-space: nowrap;
+		font-size: clamp(0.82rem, 3.5vw, 0.95rem);
+		padding: 9px 12px;
 	}
 
 	.latest-works {

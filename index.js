@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	initWorkflowStepState();
 	initViewportSections();
 	initHomeMotion();
+	initWorkflowMobileMotion();
 	initAwardTabs();
 });
 
@@ -207,6 +208,175 @@ function initWorkflowStepState() {
 	setActiveStep(0);
 }
 
+const WORKFLOW_LINE_TOP_EPS = 2;
+
+/**
+ * SplitText 風格：依排版視覺斷行（適合中文），不需 Club 的 SplitText 外掛。
+ * 參考概念：https://demos.gsap.com/demo/responsive-line-splits-on-scroll/
+ */
+function splitWorkflowParagraphIntoLines(paragraph) {
+	const source =
+		paragraph.dataset.lineSplitOriginal != null
+			? paragraph.dataset.lineSplitOriginal
+			: paragraph.textContent;
+	if (!source.trim()) return;
+
+	paragraph.dataset.lineSplitOriginal = source;
+	paragraph.replaceChildren();
+
+	const frag = document.createDocumentFragment();
+	for (const ch of Array.from(source)) {
+		const span = document.createElement("span");
+		span.className = "workflow-line-split-measure";
+		span.textContent = ch;
+		frag.appendChild(span);
+	}
+	paragraph.appendChild(frag);
+	void paragraph.offsetHeight;
+
+	const spans = Array.from(
+		paragraph.querySelectorAll(".workflow-line-split-measure")
+	);
+	const lineGroups = [];
+	let row = [];
+	let lastTop = null;
+	for (const span of spans) {
+		const top = span.offsetTop;
+		if (lastTop !== null && top > lastTop + WORKFLOW_LINE_TOP_EPS) {
+			lineGroups.push(row);
+			row = [];
+		}
+		row.push(span);
+		lastTop = top;
+	}
+	if (row.length) lineGroups.push(row);
+
+	paragraph.replaceChildren();
+	for (const group of lineGroups) {
+		const line = document.createElement("span");
+		line.className = "workflow-line-split-line";
+		const inner = document.createElement("span");
+		inner.className = "workflow-line-split-line__inner";
+		for (const span of group) {
+			span.classList.remove("workflow-line-split-measure");
+			inner.appendChild(span);
+		}
+		line.appendChild(inner);
+		paragraph.appendChild(line);
+	}
+}
+
+function applyWorkflowMobileLineSplits(section) {
+	section.querySelectorAll(".timeline-body p").forEach(splitWorkflowParagraphIntoLines);
+}
+
+function restoreWorkflowMobileLineSplits(section) {
+	section.querySelectorAll(".timeline-body p").forEach((p) => {
+		if (p.dataset.lineSplitOriginal == null) return;
+		p.textContent = p.dataset.lineSplitOriginal;
+		delete p.dataset.lineSplitOriginal;
+	});
+}
+
+function initWorkflowMobileMotion() {
+	const section = document.querySelector(".workflow-section2");
+	if (!section) return;
+
+	SYCommon.withScrollTrigger((gsap, ScrollTrigger) => {
+		const mm = gsap.matchMedia();
+
+		mm.add("(max-width: 1199px)", () => {
+			applyWorkflowMobileLineSplits(section);
+
+			let resizeTimer;
+			const onResize = () => {
+				clearTimeout(resizeTimer);
+				resizeTimer = setTimeout(() => ScrollTrigger.refresh(), 120);
+			};
+			window.addEventListener("resize", onResize);
+
+			const ctx = gsap.context(() => {
+				const items = section.querySelectorAll(".timeline > li");
+				if (!items.length) return;
+
+				const heading = section.querySelector(".section-heading");
+				if (heading) {
+					gsap.from(heading, {
+						y: 22,
+						autoAlpha: 0,
+						duration: 0.68,
+						ease: "power3.out",
+						scrollTrigger: {
+							trigger: section,
+							start: "top 82%",
+							once: true,
+						},
+					});
+				}
+
+				items.forEach((li) => {
+					const imageWrap = li.querySelector(".timeline-image");
+					const panel = li.querySelector(".timeline-panel");
+					const titleEl = li.querySelector(".timeline-heading h4");
+					const lineInners = li.querySelectorAll(".workflow-line-split-line__inner");
+					if (!imageWrap || !panel) return;
+
+					gsap.set(lineInners, { yPercent: 108 });
+
+					const tl = gsap.timeline({
+						scrollTrigger: {
+							trigger: li,
+							start: "top 88%",
+							once: true,
+						},
+					});
+
+					tl.from(imageWrap, {
+						autoAlpha: 0,
+						scale: 0.82,
+						y: 20,
+						duration: 0.54,
+						ease: "back.out(1.35)",
+					});
+
+					if (titleEl) {
+						tl.from(
+							titleEl,
+							{
+								autoAlpha: 0,
+								y: 14,
+								duration: 0.42,
+								ease: "power3.out",
+							},
+							"-=0.32"
+						);
+					}
+
+					if (lineInners.length) {
+						tl.to(
+							lineInners,
+							{
+								yPercent: 0,
+								duration: 0.52,
+								ease: "power4.out",
+								stagger: { each: 0.055, from: "start" },
+							},
+							titleEl ? "-=0.22" : "-=0.28"
+						);
+					}
+				});
+			}, section);
+
+			return () => {
+				window.removeEventListener("resize", onResize);
+				clearTimeout(resizeTimer);
+				ctx.revert();
+				restoreWorkflowMobileLineSplits(section);
+			};
+		});
+	});
+}
+
 function initViewportSections() {
 	document
 		.querySelectorAll(".about-sy, .award-section, .design-project, #workflow, .qrcode")
@@ -226,12 +396,9 @@ function initHomeMotion() {
 	SYCommon.revealOnEnter(".award-section", { y: 34, threshold: 0.12 });
 	SYCommon.revealOnEnter(".award-area", { y: 24, threshold: 0.18 });
 	SYCommon.revealOnEnter(".portfolio-size", { y: 36, scale: 0.98, threshold: 0.12 });
-	SYCommon.revealOnEnter(".timeline > li, .qrcode", { y: 32, threshold: 0.12 });
+	SYCommon.revealOnEnter(".qrcode", { y: 32, threshold: 0.12 });
 	SYCommon.initPortfolioCardMotion();
-	SYCommon.initTextMasking(
-		".timeline-body p, .contant-info p",
-		{ threshold: 0.24, duration: 1 }
-	);
+	SYCommon.initTextMasking(".contant-info p", { threshold: 0.24, duration: 1 });
 	SYCommon.initTextMasking(".about-content__title, .about-content p", {
 		threshold: 0.18,
 		duration: 1.05,
@@ -274,47 +441,35 @@ function initAwardTabs() {
 }
 
 function initAwardImageMotion() {
-	SYCommon.revealOnEnter(".award-img img", {
-		y: 26,
-		scale: 0.92,
-		threshold: 0.12,
-		duration: 0.85,
-	});
+	const container = document.querySelector(".award-img");
+	const images = container ? Array.from(container.querySelectorAll("img")) : [];
+	if (!images.length) return;
 
-	SYCommon.withGSAP((gsap) => {
-		document.querySelectorAll(".award-img img").forEach((image, index) => {
-			const drift = index % 2 === 0 ? -4 : 4;
-
-			gsap.to(image, {
-				y: drift,
-				duration: 2.8 + (index % 5) * 0.18,
-				ease: "sine.inOut",
-				repeat: -1,
-				yoyo: true,
-				delay: index * 0.04,
-			});
-
-			image.addEventListener("mouseenter", () => {
-				gsap.to(image, {
-					y: -10,
-					scale: 1.08,
-					rotate: index % 2 === 0 ? -1.5 : 1.5,
-					duration: 0.45,
-					ease: "power3.out",
-					overwrite: "auto",
-				});
-			});
-
-			image.addEventListener("mouseleave", () => {
-				gsap.to(image, {
-					scale: 1,
-					rotate: 0,
-					duration: 0.45,
-					ease: "power3.out",
-					overwrite: "auto",
-				});
-			});
-		});
+	SYCommon.withScrollTrigger((gsap) => {
+		gsap.fromTo(
+			images,
+			{
+				y: (index) => 32 + (index % 5) * 3,
+				scale: 0.88,
+				rotation: (index) => (index % 2 === 0 ? -2.2 : 2.2),
+			},
+			{
+				y: 0,
+				scale: 1,
+				rotation: 0,
+				ease: "none",
+				stagger: {
+					each: 0.045,
+					from: "start",
+				},
+				scrollTrigger: {
+					trigger: container,
+					start: "top 84%",
+					end: "bottom 28%",
+					scrub: 0.65,
+				},
+			}
+		);
 	});
 }
 
